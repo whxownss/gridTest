@@ -13,5 +13,16 @@
 		   AND TABLE_SCHEMA = 'c2d2309t2'
 		   AND TABLE_NAME = 'CINEMA';
 	</select>
-
+	
+	<select id="getCinema">
+		SELECT *
+		  FROM CINEMA
+	</select>
+	
+	<select id="proc" resultType="map">
+		CALL proc_test();
+	</select>
+	
+	
+	
 </mapper>
