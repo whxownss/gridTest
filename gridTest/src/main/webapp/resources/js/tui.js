@@ -1,10 +1,12 @@
 $(() => {
+	
 	debugger;
-//	const dataSource = {
-//		api: {
-//			readData: { url: 'test/cinema', method: 'GET', initParams: po}
-//		}
-//	};
+	
+	const dataSource = {
+		api: {
+			readData: { url: 'test/cinema', method: 'GET' }
+		}
+	};
 	
 	const Grid = tui.Grid;
 	const grid = new Grid({
@@ -19,10 +21,10 @@ $(() => {
 			{name:"CREATE_USER", header:"사용자"},
 			{name:"CREATE_DATE", header:"사용 시간"}
 		],
-		data: {
-			api: {
-				readData: { url: 'test/cinema', method: 'GET'}
-			}
+		data: dataSource,
+		rowHeaders: ['rowNum'],
+		pageOptions: {
+        	perPage: 3
 		}
 	});
 	debugger;

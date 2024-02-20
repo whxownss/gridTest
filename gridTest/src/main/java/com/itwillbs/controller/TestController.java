@@ -1,6 +1,8 @@
 package com.itwillbs.controller;
 
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -35,15 +38,21 @@ public class TestController {
 	public String tui(Model model) {
 		return "tui";
 	}
-	
-	@GetMapping("/test/cinema")
+//	, produces = "application/json;charset=UTF-8"
+	@GetMapping(value = "/test/cinema")
 	@ResponseBody
-	public String cinema() throws JsonProcessingException {
+	public String cinema(@RequestParam Map<String, String> map) throws JsonProcessingException {
+		
+		System.out.println(map.get("page"));
+		System.out.println(map.get("perPage"));
 		
 		String json = new ObjectMapper().writeValueAsString(testDAO.getMember());
 		System.out.println(json);
 		
-		return "{\"result\": true, \"data\": {\"contents\": "+ json +",\"pagination\": {\"page\": 1, \"totalCount\": 100}}}";
+		int a =  51 / Integer.parseInt(map.get("perPage"));
+		System.out.println(a);
+		
+		return "{\"result\": true, \"data\": {\"contents\": "+ json +",\"pagination\": {\"page\": " + map.get("page") + ", \"totalCount\": " + a + " }}}";
 	}
 }
 

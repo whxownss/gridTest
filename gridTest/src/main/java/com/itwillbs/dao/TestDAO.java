@@ -16,7 +16,7 @@ public class TestDAO {
 	public List<Map<String, String>> getMember() {
 		
 		List<Map<String, String>> list = sqlSession.selectList("Test.proc");
-		System.out.println(list);
+//		System.out.println(list);
 		return list;
 	}
 }
