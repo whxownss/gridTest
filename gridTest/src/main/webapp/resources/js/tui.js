@@ -23,6 +23,9 @@ $(() => {
 			api: {
 				readData: { url: 'test/cinema', method: 'GET'}
 			}
+		},
+		pageOptions: {
+			perPage: 5
 		}
 	});
 	debugger;
